@@ -16,4 +16,4 @@ COPY configure.sh .
 RUN chmod +x configure.sh
 
 # Set entrypoint
-ENTRYPOINT ["./configure.sh"]
+# ENTRYPOINT ["./configure.sh"]
