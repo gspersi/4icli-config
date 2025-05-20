@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 # Install dependencies
 RUN dpkg --add-architecture i386 && \
     apt-get update && \
-    apt-get install -y wine64 wine32 wget unzip
+    apt-get install -y wine64 wine32 xvfb wget unzip
 
 # Set working directory
 WORKDIR /opt/4icli
