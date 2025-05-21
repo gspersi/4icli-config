@@ -3,7 +3,8 @@ FROM ubuntu:22.04
 # Install any dependencies your Linux binary needs (adjust as needed)
 RUN apt-get update && \
     apt-get install -y curl unzip && \
-    apt-get clean
+    apt-get clean && \
+	rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /opt/4icli
