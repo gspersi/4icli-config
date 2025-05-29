@@ -2,7 +2,8 @@ FROM ubuntu:22.04
 
 # Install dependencies
 RUN apt-get update && \
-    apt-get install -y curl unzip && \
+    apt-get install -y build-essential curl git unzip \
+    libssl-dev zlib1g-dev libffi-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
