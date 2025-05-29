@@ -9,15 +9,10 @@ RUN apt-get update && \
 # Set working directory
 WORKDIR /opt/4icli
 
-# Copy the Linux binary and script
-COPY 4icli .
-COPY configure.sh .
+# Copy the Linux zip file
+COPY 4icli-linux-x64-v0.0.20.zip
 
 # Make them executable
 RUN chmod +x 4icli configure.sh
 
-RUN mkdir -p /mnt/ppcc
-
-# Set entrypoint to your script
-ENTRYPOINT ["./configure.sh"]
 
