@@ -1,18 +1,28 @@
 FROM ubuntu:22.04
 
-# Install any dependencies your Linux binary needs (adjust as needed)
+# Install dependencies
 RUN apt-get update && \
     apt-get install -y curl unzip && \
     apt-get clean && \
-	rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /opt/4icli
 
-# Copy the Linux zip file
-COPY 4icli-linux-x64-v0.0.20.zip
+# Copy the Linux zip file into the container
+COPY 4icli-linux-x64-v0.0.20.zip .
 
-# Make them executable
-RUN chmod +x 4icli configure.sh
+# Unzip the file
+RUN unzip 4icli-linux-x64-v0.0.20.zip -d /opt/4icli && \
+    chmod +x /opt/4icli/*
+
+# Optional: expose a volume to mount the shared directory
+VOLUME ["/mnt/ppcc-share"]
+
+# Copy unzipped contents to the mount point
+RUN cp -r /opt/4icli/* /mnt/ppcc-share/
+
+# Set default command (optional)
+CMD ["/bin/bash"]
 
 
