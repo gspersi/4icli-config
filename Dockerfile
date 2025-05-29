@@ -16,6 +16,8 @@ COPY configure.sh .
 # Make them executable
 RUN chmod +x 4icli configure.sh
 
+RUN mkdir -p /mnt/ppcc
+
 # Set entrypoint to your script
 ENTRYPOINT ["./configure.sh"]
 
